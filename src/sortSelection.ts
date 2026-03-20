@@ -1,53 +1,69 @@
 /**
- * Selection Sort Algorithm:
- * Finds the smallest element in an array and moves it to a new sorted array.
+ * Selection Sort algorithm implementation.
  * * * ```ts
- * const sorted = selectionSort([5, 3, 6, 2, 10]); // [2, 3, 5, 6, 10]
+ * const result = selectionSort([5, 3, 6, 2, 10]); // Returns [2, 3, 5, 6, 10]
  * ```
- * * @param arr - The unsorted array of numbers.
- * @returns A new array sorted from smallest to largest.
+ * * @param arr - An unsorted array of numbers.
+ * @returns A new sorted array from smallest to largest.
  * @complexity Time: O(n²) | Space: O(n)
  */
 
-// Helper function to find the index of the smallest element
+// 1. Helper function to find the index of the smallest element in an array.
 function findSmallestIndex(arr: number[]): number {
+  // 2. Assume the first element is the smallest to start the comparison.
   let smallest = arr[0];
+  // 3. Store the index of the current smallest element.
   let smallestIndex = 0;
 
+  // 4. Iterate through the array starting from the second element (index 1).
   for (let i = 1; i < arr.length; i++) {
-    // We use a non-null assertion or check because of your strict tsconfig
+    // 5. Access the current element in the loop.
     const current = arr[i];
+
+    // 6. Check if current element is smaller than our current record.
+    // (The check 'current !== undefined' is for strict TypeScript safety).
     if (current !== undefined && current < (smallest as number)) {
+      // 7. Update the smallest value found so far.
       smallest = current;
+      // 8. Update the index of the smallest value.
       smallestIndex = i;
     }
   }
-
+  // 9. Return the final index of the smallest item found.
   return smallestIndex;
 }
 
-// Main Selection Sort function
+// 10. Main function to perform Selection Sort.
 export function selectionSort(arr: number[]): number[] {
-  const newArr: number[] = [];
-  const tempArr = [...arr]; // Create a copy to avoid mutating the original array
+  // 11. Create an empty array to store the sorted elements.
+  const sorted: number[] = [];
 
-  const length = tempArr.length;
-  for (let i = 0; i < length; i++) {
-    // 1. Find the smallest element in the remaining array
-    const smallestIndex = findSmallestIndex(tempArr);
+  // 12. Create a shallow copy of the input array to avoid changing the original data.
+  const temp = [...arr];
 
-    // 2. Remove it from the original and push it to the new array
-    const [smallestElement] = tempArr.splice(smallestIndex, 1);
+  /**
+   * 13. Loop while there are still elements left in the temporary array.
+   * This process continues until 'temp' is empty.
+   */
+  while (temp.length > 0) {
+    // 14. Find the index of the smallest element in the remaining 'temp' array.
+    const smallestIdx = findSmallestIndex(temp);
 
-    if (smallestElement !== undefined) {
-      newArr.push(smallestElement);
+    // 15. Remove the smallest element from 'temp' using .splice().
+    // The [item] syntax extracts the first element of the returned array.
+    const [item] = temp.splice(smallestIdx, 1);
+
+    // 16. Verify the element exists and push it into our 'sorted' results.
+    if (item !== undefined) {
+      sorted.push(item);
     }
   }
 
-  return newArr;
+  // 17. Return the final sorted array.
+  return sorted;
 }
 
-// TESTING:
-const unsortedList = [5, 3, 6, 2, 10];
+// TESTING THE ALGORITHM:
+const unsortedList: number[] = [5, 3, 6, 2, 10];
 console.log("Original List:", unsortedList);
 console.log("Sorted List:", selectionSort(unsortedList));
