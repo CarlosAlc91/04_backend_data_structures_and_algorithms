@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Compiled files (JavaScript generated)
+dist/
+*.js
+*.js.map
+*.d.ts
+*.d.ts.map
+
+# Logs and temps
+npm-debug.log*
+.DS_Store
