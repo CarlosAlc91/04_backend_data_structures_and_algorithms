@@ -66,4 +66,5 @@ export function selectionSort(arr: number[]): number[] {
 // TESTING THE ALGORITHM:
 const unsortedList: number[] = [5, 3, 6, 2, 10];
 console.log("Original List:", unsortedList);
+//Will show the sorted array.
 console.log("Sorted List:", selectionSort(unsortedList));
