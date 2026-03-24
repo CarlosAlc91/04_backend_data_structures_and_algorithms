@@ -59,3 +59,5 @@ function binarySearch(arr: number[], item: number): number | null {
 const myList: number[] = [1, 2, 3, 4, 5, 6];
 
 console.log("Index of 3:", binarySearch(myList, 3));
+
+
