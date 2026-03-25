@@ -1,26 +1,42 @@
 # 🧩 Data Structures & Algorithms (DSA) with TypeScript
 
-This repository serves as my personal laboratory for practicing algorithms and data structures, following my learning path toward becoming a Backend Developer.
+> A personal laboratory for mastering algorithms and data structures on the path to becoming a Backend Developer.
 
 ## 📚 Reference Books
 
-- **Grokking Algorithms, 2nd Ed** - Aditya Bhargava
-- **Algorithms Illuminated, Part 1** - Tim Roughgarden
-- **Cracking the Coding Interview** - Gayle Laakmann McDowell
+- **Grokking Algorithms** — Aditya Bhargava
+- **Eloquent JavaScript** — Marijn Haverbeke
+- **Learning TypeScript** — Josh Goldberg
 
 ## 🚀 How to Run the Exercises
 
 Since this project uses **ESM (ECMAScript Modules)** and **TypeScript**, you can run any file in the `src/` folder independently using the following command:
 
 ```bash
-npm run dev src/filename.ts
+npm run dev src/<folder>/<filename>.ts
+
+```
+
+**Examples**
+
+```bash
+npm run dev src/01_Hashing/validAnagram.ts
+npm run dev src/02_Binary_Search/binarySearch.ts
+npm run dev src/03_Two_Pointers/twoSum.ts
 
 ```
 
 ## 📂 Repository Contents
 
-- **src/binarySearch.ts:** - Implementation of binary search with $O(\log n)$ complexity.
-- **src/sortSelection.ts:** - Implementation of sorting algorithm.
+src/
+├── 01_Hashing/
+│   └── validAnagram.ts        # Frequency counter pattern - O(n)
+├── 02_Binary_Search/
+│   └── binarySearch.ts        # Divide and conquer - O(log n)
+├── 03_Two_Pointers/
+│   └── twoSum.ts              # Hash map approach - O(n)
+└── 04_Sorting/              
+    └── selectionSort.ts       # Simple sorting - O(n²)
 
 ## 🛠️ Tech Stack
 
