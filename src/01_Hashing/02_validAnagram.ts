@@ -1,45 +1,48 @@
 /**
+ * Valid Anagram - Frequency Counter
  * 
- * Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
-
-*An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
-
-*Example 1:
-
-*Input: s = "racecar", t = "carrace"
-
-*Output: true
-*Example 2:
-
-*Input: s = "jar", t = "jam"
-
-*Output: false
-*Constraints:
-
-*s and t consist of lowercase English letters
+ * Given two strings s and t, return true if they are anagrams of each other.
+ * An anagram contains the exact same characters with the same frequencies.
+ * 
+ * Time Complexity: O(n) - we traverse both strings once
+ * Space Complexity: O(1) - at most 26 characters (lowercase English letters)
+ * 
+ * @param s - First string
+ * @param t - Second string
+ * @returns true if strings are anagrams, false otherwise
  */
-
-function isAnagram(string1: string, string2: string): boolean {
-  if (string1.length !== string2.length) {
-    return false;
-  }
-
-  const count: Record<string, number> = {};
-
-  for (let char of string1) {
-    count[char] = (count[char] || 0) + 1;
-  }
-
-  for (let char of string2) {
-    if (!count[char]) {
-      return false;
+function isAnagram(s: string, t: string): boolean {
+    // If lengths differ, they cannot be anagrams
+    if (s.length !== t.length) {
+        return false;
     }
-    count[char]--;
-  }
-
-  return true;
+    
+    // Create a frequency counter object
+    // Keys are characters, values are their counts
+    const count: Record<string, number> = {};
+    
+    // First pass: count characters in string s
+    for (const char of s) {
+        // Increment count for this character
+        // (count[char] || 0) handles first occurrence (undefined becomes 0)
+        count[char] = (count[char] || 0) + 1;
+    }
+    
+    // Second pass: decrement counts using string t
+    for (const char of t) {
+        // If character doesn't exist or count is 0, we have a mismatch
+        if (!count[char]) {
+            return false;
+        }
+        // Decrement the count for this character
+        count[char]--;
+    }
+    
+    // All counts should be zero if strings are anagrams
+    return true;
 }
 
-console.log(isAnagram("racecar", "carrace"));
-console.log(isAnagram("jar", "jam"));
-console.log(isAnagram("amor", "roma"));
+// Test cases
+console.log(isAnagram("racecar", "carrace")); // true
+console.log(isAnagram("jar", "jam"));         // false
+console.log(isAnagram("amor", "roma"));       // true
