@@ -42,3 +42,4 @@ function isAnagram(string1: string, string2: string): boolean {
 
 console.log(isAnagram("racecar", "carrace"));
 console.log(isAnagram("jar", "jam"));
+console.log(isAnagram("amor", "roma"));

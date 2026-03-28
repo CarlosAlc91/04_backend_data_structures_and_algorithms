@@ -64,4 +64,5 @@ function twoSum(arr: number[], target: number): number[] {
 }
 
 const arr = [3, 4, 5, 6];
-console.log(twoSum(arr, 11));
+const target = 13;
+console.log(`The sum of ${target} is given by:`, twoSum(arr, target));
