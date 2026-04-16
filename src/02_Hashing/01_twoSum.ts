@@ -25,44 +25,31 @@
  *
  */
 
-function twoSum(arr: number[], target: number): number[] {
-  // Step 1: Create an empty Map to store numbers we've already seen
-  // Key: the number value
-  // Value: the index where that number appears
-  // Map is used instead of an object because keys can be negative numbers
+//1. function creation
+const twoSum = (arr: number[], target: number): number[] => {
+  //2. Map creation to store both key(number) and value(index)
   const map = new Map<number, number>();
 
-  // Step 2: Traverse the array element by element
-  // i is the current index (0, 1, 2, ...)
+  //3. Array iteration, using a conventional for since we're iterating numbers and indices
   for (let i = 0; i < arr.length; i++) {
-    // Step 3: Calculate the complement
-    // The complement is the number we need to find to complete the sum
-    // If nums[i] + X = target, then X = target - nums[i]
-    // The ! (non-null assertion) tells TypeScript:
-    // "Trust me, nums[i] exists because i is within the array bounds"
+    //4. Once we iterate our arr, we need to find a sum complement
     const complement = target - arr[i]!;
 
-    // Step 4: Check if the complement already exists in the Map
-    // map.has(complement) asks: "Did we see this number before?"
+    //5. if our map has the numbers
     if (map.has(complement)) {
-      // Step 5: We found the solution!
-      // map.get(complement) gives us the index where the complement appeared
-      // That index is always smaller than i because we stored it in previous iterations
-      // Return [complement's index, current index]
       return [map.get(complement)!, i];
     }
 
-    // Step 6: If we didn't find the complement, store the current number in the Map
-    // This allows future numbers to find this one as their complement
-    // Store the number value as key and its index as value
+    //6. if we hasn-t add it to our map
     map.set(arr[i]!, i);
   }
 
-  // Step 7: According to the problem statement, a solution always exists
-  // This return is never reached, but TypeScript requires a return value
+  //No solution found we return an empty array []
   return [];
-}
+};
 
-const arr = [3, 4, 5, 6];
-const target = 13;
-console.log(`The sum of ${target} is given by:`, twoSum(arr, target));
+const arr = [1, 2, 3, 4];
+const arr2 = [1, 1, 2, 2, 3];
+
+console.log(twoSum(arr, 7));
+console.log(twoSum(arr, 17));

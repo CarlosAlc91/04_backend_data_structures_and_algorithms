@@ -24,40 +24,24 @@
  * @returns true if duplicate exists, false otherwise
  */
 
-function containsDuplicate(nums: number[]): boolean {
-  // LINE 1: Create a Set to store numbers we've already seen
-  // Set is a built-in JavaScript data structure that stores unique values
-  // It provides O(1) average time complexity for .has() and .add() operations
-  // We specify <number> for TypeScript type safety
-  const seen = new Set<number>();
+//1. Function creation
+const containsDuplicate = (arr: number[]): boolean => {
+  //2. we create our map to save each number we already passed
+  const map = new Set<number>();
 
-  // LINE 2: Iterate through each number in the array
-  // Using for...of loop gives us direct access to each value
-  // We don't need the index for this algorithm
-  for (const num of nums) {
-    // LINE 3: Check if the current number is already in the Set
-    // .has() returns true if the value exists, false otherwise
-    // This operation is O(1) on average because Set uses a hash table internally
-    if (seen.has(num)) {
-      // LINE 4: If we find a number that's already in the Set
-      // That means we've seen this value before → duplicate exists
-      // Return true immediately, no need to check remaining elements
-      // Early exit improves average-case performance
+  //3. we iterate each value with a for...of loop
+  for (const num of arr) {
+    //4. once we iterate the number we ask our map
+    if (map.has(num)) {
       return true;
     }
 
-    // LINE 5: If the number is not in the Set yet
-    // Add it to the Set so we can detect it if it appears again
-    // .add() is also O(1) on average
-    // Now future iterations can detect this number as a duplicate
-    seen.add(num);
+    //5. if we haven't add it to our map
+    map.add(num);
   }
 
-  // LINE 6: If we finish the loop without finding any duplicates
-  // That means all elements in the array are unique
-  // Return false to indicate no duplicates were found
   return false;
-}
+};
 
 // Test cases
 const test1 = [1, 2, 3, 3];
