@@ -13,8 +13,9 @@
  * @returns true if the string is a palindrome, false otherwise
  */
 
-function isPalindrome(s: string): boolean {
+/*function isPalindrome(s: string): boolean {
   // 1. Define a helper function to validate characters using ASCII codes
+
   const isAlphanumeric = (char: string): boolean => {
     // Get the ASCII decimal code of the character at index 0
     const code = char.charCodeAt(0);
@@ -61,6 +62,36 @@ function isPalindrome(s: string): boolean {
   // 9. If the loop finishes without returning false, every valid pair matched perfectly
   return true;
 }
+*/
+
+//1. function definition using TypeScrip types.
+const isPalindrome = (s: string): boolean => {
+  //2. Sanitize the string: convert to lowercase and remove all non-alphanumeric characters
+  const cleanString: string = s.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  //3. Initialize two pointers at the opposite ends of the clean string.
+  let left = 0;
+  let right = cleanString.length - 1;
+
+  //4. Loop until pointers meet or cross in the center.
+  while (left < right) {
+
+    //5. Check for a mismatch. Use ! to satisfy strict null checks in TS.
+    if (cleanString[left]! !== cleanString[right]!) {
+
+      //6. If any pair doesn't match, it's not a palindrome.
+      return false;
+    }
+
+    //7. Move both pointers inward toward the center.
+    left++;
+    right--;
+  }
+
+  //8. If the loop completes, all corresponding characters matched perfectly.
+  return true;
+};
+
 const s = "Was it a car or a cat I saw?";
 console.log(isPalindrome(s));
 
