@@ -26,25 +26,19 @@
  */
 
 //1. function creation
-const twoSum = (arr: number[], target: number): number[] => {
-  //2. Map creation to store both key(number) and value(index)
+const twoSum = (nums: number[], target: number): number[] => {
   const map = new Map<number, number>();
 
-  //3. Array iteration, using a conventional for since we're iterating numbers and indices
-  for (let i = 0; i < arr.length; i++) {
-    //4. Once we iterate our arr, we need to find a sum complement
-    const complement = target - arr[i]!;
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
 
-    //5. if our map has the numbers
     if (map.has(complement)) {
       return [map.get(complement)!, i];
     }
 
-    //6. if we hasn-t add it to our map
-    map.set(arr[i]!, i);
+    map.set(nums[i], i);
   }
 
-  //No solution found we return an empty array []
   return [];
 };
 
