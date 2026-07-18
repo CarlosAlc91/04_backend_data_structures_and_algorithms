@@ -64,36 +64,26 @@
 }
 */
 
-//1. function definition using TypeScrip types.
 const isPalindrome = (s: string): boolean => {
-  //2. Sanitize the string: convert to lowercase and remove all non-alphanumeric characters
   const cleanString: string = s.toLowerCase().replace(/[^a-z0-9]/g, "");
 
-  //3. Initialize two pointers at the opposite ends of the clean string.
   let left = 0;
   let right = cleanString.length - 1;
 
-  //4. Loop until pointers meet or cross in the center.
   while (left < right) {
-
-    //5. Check for a mismatch. Use ! to satisfy strict null checks in TS.
     if (cleanString[left]! !== cleanString[right]!) {
-
-      //6. If any pair doesn't match, it's not a palindrome.
       return false;
     }
 
-    //7. Move both pointers inward toward the center.
     left++;
     right--;
   }
 
-  //8. If the loop completes, all corresponding characters matched perfectly.
   return true;
 };
 
-const s = "Was it a car or a cat I saw?";
-console.log(isPalindrome(s));
+const s1 = "Dammit, I'm mad!";
+console.log(isPalindrome(s1));
 
-const s2 = "tab a cat";
-console.log(isPalindrome(s2));
+const s3 = "tab a cat";
+console.log(isPalindrome(s3));
