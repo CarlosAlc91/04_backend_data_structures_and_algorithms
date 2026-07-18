@@ -75,10 +75,8 @@ const isPalindrome = (s: string): boolean => {
 
   //4. Loop until pointers meet or cross in the center.
   while (left < right) {
-
     //5. Check for a mismatch. Use ! to satisfy strict null checks in TS.
     if (cleanString[left]! !== cleanString[right]!) {
-
       //6. If any pair doesn't match, it's not a palindrome.
       return false;
     }
@@ -92,8 +90,8 @@ const isPalindrome = (s: string): boolean => {
   return true;
 };
 
-const s = "Was it a car or a cat I saw?";
-console.log(isPalindrome(s));
+const s1 = "Was it a car or a cat I saw?";
+console.log(isPalindrome(s1));
 
-const s2 = "tab a cat";
-console.log(isPalindrome(s2));
+const s3 = "tab a cat";
+console.log(isPalindrome(s3));
