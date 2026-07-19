@@ -6,6 +6,20 @@
  *
  */
 
+/**
+ * 
+ * *Para las variables: "First, I declare a charSet to serve as our 
+ * short-term memory, and I initialize left and maxLength to zero."
+ * *Para el ciclo: "Then, I loop through the string using the right 
+ * pointer to expand the sliding window."
+ * *Para el filtro: "If charSet.has(currentChar) is true, we hit a 
+ * duplicate. I use a while loop to shrink the window from the left by 
+ * deleting characters until the duplicate is gone."
+ * *Para el récord: "Finally, I calculate the currentWindowSize using 
+ * right - left + 1 and update the maxLength if we find a new record."
+ * 
+ */
+
 //1. Function declaration
 const lengthOfLongestSubstring = (s: string): number => {
   //2. Set creation to store unique characters currently in our active window.
