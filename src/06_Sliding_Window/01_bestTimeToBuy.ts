@@ -14,6 +14,27 @@
  *
  */
 
+const bestTimeToBuy = (prices: number[]): number => {
+  if (prices.length < 2) return 0;
+
+  let minPrice = prices[0];
+  let maxProfit = 0;
+
+  for (let i = 1; i < prices.length; i++) {
+    const currentPrice = prices[i];
+
+    minPrice = Math.min(minPrice, currentPrice);
+
+    const potentialProfit = currentPrice - minPrice;
+    maxProfit = Math.max(maxProfit, potentialProfit);
+  }
+  return maxProfit;
+};
+
+const marketPrices: number[] = [7, 1, 5, 3, 6, 4];
+console.log(bestTimeToBuy(marketPrices));
+
+/*
 //1. Function declaration
 const maxProfit = (prices: number[]): number => {
   //2. Establish our baseline purchase price using the first day's stock price.
@@ -51,6 +72,4 @@ const maxProfit = (prices: number[]): number => {
   //12. After checking every single day, return the absolute highest profit accumulated
   return maxProfit;
 };
-
-const marketPrices: number[] = [7, 1, 5, 3, 6, 4];
-console.log(maxProfit(marketPrices));
+*/
